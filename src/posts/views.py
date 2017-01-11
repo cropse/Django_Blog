@@ -7,10 +7,19 @@ def post_create(request):
     return HttpResponse("<h1>create</h1>")
 
 def post_detail(request):# retrieve
-    return render(request, "index.html")
+    context = {
+        'title': "Detail",
+    }
+    return render(request, "index.html", context)
 
 def post_list(request):# list item
-    return HttpResponse("<h1>list</h1>")
+    if request.user.is_authenticated():
+        context = {
+            'title': "List",
+        }
+        return render(request, "index.html", context)
+    else:
+        return HttpResponse("<h1>Hell No!!</h1>")
 
 def post_update(request):
     return HttpResponse("<h1>Hello</h1>")
