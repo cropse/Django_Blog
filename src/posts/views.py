@@ -6,10 +6,10 @@ from .models import Post
 
 def post_create(request):
     return HttpResponse("<h1>create</h1>")
-
-def post_detail(request):# retrieve
+ 
+def post_detail(request, id=None):# retrieve
     # instance = Post.objects.get(id=2)
-    instance = get_object_or_404(Post, id="3")
+    instance = get_object_or_404(Post, id=id)
     context = {
         'instance': instance,
         'title': instance.title,
