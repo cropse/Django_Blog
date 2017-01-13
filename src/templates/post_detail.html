@@ -1,24 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
 
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-    {% if "html-safe" in message.tags %}
-        {{ message|safe }}
-    {% else %}
-        {{ message }}
-    {% endif %}
-    </li>
-    {% endfor %}
-</ul>
-{% endif %}
+{% block head_title %}
+{{ instance.title }}|{{ block.super }}    
+{% endblock head_title %}
 
+{% block content %}
 <h1>{{ title }}</h1>
 
 {{ instnace }}<br/>
@@ -27,5 +13,5 @@
 {{ instance.content }}<br/>
 {{ instance.updated }}<br/>
 <a href={% url "posts:update" id=instance.id %}>Edit It</a>
-</body>
-</html>
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block head_title %}
+        blog_tutorial
+    {% endblock head_title %}</title>
+</head>
+<body>
+
+<div class="container">
+    {% include "messages_display.html" %}
+
+    {% block content %}
+
+    {% endblock content %}
+</div>
+
+
+</body>
+</html>
