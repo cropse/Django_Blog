@@ -11,6 +11,6 @@
 {{ instance.title }}<br/>
 {{ instance.content }}<br/>
 {{ instance.updated }}<br/>
-
+<a href={% url "posts:update" id=instance.id %}>Edit It</a>
 </body>
 </html>
