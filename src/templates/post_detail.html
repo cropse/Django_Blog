@@ -5,13 +5,11 @@
 {% endblock head_title %}
 
 {% block content %}
-<h1>{{ title }}</h1>
-
-{{ instnace }}<br/>
-{{ instnace.id }}<br/>
-{{ instance.title }}<br/>
-{{ instance.content }}<br/>
-{{ instance.updated }}<br/>
+<div class="col-sm-6 col-sm-offset-3">
+<h1>{{ title }} <small>{{ instance.timestamp }}</small></h1>
+{{ instance.content|linebreaks}}<br/>
+Updated at {{ instance.updated }}<br/>
 <a href={% url "posts:update" id=instance.id %}>Edit It</a>
+</div>
 
 {% endblock content %}
