@@ -5,6 +5,8 @@
 {% endblock head_title %}
 
 {% block content %}
+
+{{ share_string }}
 <div class="col-sm-6 col-sm-offset-3">
 {% if instance.image %}
   <img src="{{ instance.image.url }}" class="img-responsive">
@@ -13,7 +15,25 @@
 
 {{ instance.content|linebreaks}}<br/>
 Updated at {{ instance.updated }}<br/>
-<a href={% url "posts:update" id=instance.id %}>Edit It</a>
+<a href={% url "posts:update" slug=instance.slug %}>Edit It</a>
+
+<a href="https://www.facebook.com/sharer/sharer.php?">
+Facebook
+</a>
+
+<a href="https://twitter.com/home?status={{ share_string }}%20{{ request.build_absolute_uri }}">
+Twitter
+</a>
+
+<a href='https://plus.google.com/share?url={{ request.build_absolute_uri }}'>
+
+<a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ instance.title }}&summary={{ share_string }}&source={{ request.build_absolute_uri }}">
+Linkedin
+</a>
+
+<a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}&title={{ share_string }}.">Reddit</a>
+</a>
+
 </div>
 
 {% endblock content %}
