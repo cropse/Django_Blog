@@ -99,3 +99,4 @@ celerybeat-schedule
 
 # custom file
 static_cdn
+media_cdn
