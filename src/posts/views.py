@@ -9,14 +9,14 @@ from .models import Post
 from .forms import PostForm
 
 def post_create(request):
-    if request.user.is_staff or not request.user.is_superuser:
+    if not request.user.is_staff or not request.user.is_superuser:
         raise Http404
 
     form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         print(form.cleaned_data.get("title"))
-        instance.user = request.user
         instance = form.save(commit=False)
+        instance.user = request.user
         instance.save()
         # message success
         messages.success(request, "Successfully Create")
