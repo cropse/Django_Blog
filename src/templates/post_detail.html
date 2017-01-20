@@ -22,7 +22,9 @@
 <p>Author: {{ instance.user.get_full_name }}</p>
 {% endif %}
 <div class="col-sm-10 col-sm-offset-1">
-{{ instance.content|linebreaks}}<br/>
+{# content #}
+<div class="content-markdown">
+{{ instance.content}}<br/>
 </div>
 
 <hr><br>
@@ -41,4 +43,5 @@ Updated at {{ instance.updated }}<br/>
 <div class=""></div>
 </div>
 
+</div>
 {% endblock content %}

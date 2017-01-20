@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils import timezone
+from django.db.models import Q
 
 # Create your views here.
 from .models import Post
@@ -47,8 +48,15 @@ def post_list(request):# list item
         queryset_list = Post.objects.all()
     else:
         queryset_list = Post.objects.active()
-
-    paginator = Paginator(queryset_list, 6) # Show 25 contacts per page
+    search_list = request.GET.get("user_search")
+    if search_list:
+        queryset_list = queryset_list.filter(
+            Q(title__icontains=search_list) |
+            Q(content__icontains=search_list)|
+            Q(user__first_name__icontains=search_list)|
+            Q(user__last_name__icontains=search_list)
+            )
+    paginator = Paginator(queryset_list, 5) # Show 5 contacts per page
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
     try:
