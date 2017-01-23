@@ -1,5 +1,7 @@
 from django.contrib import admin
-
+from pagedown.widgets import AdminPagedownWidget
+from django import forms
+from django.db import models
 # Register your models here.
 from .models import Post
 
@@ -10,6 +12,11 @@ class PostModelAdmin(admin.ModelAdmin):
     list_filter = ['updated', 'timestamp']
     list_editable = ['title']
     search_fields = ['title', 'content']
+    # content = forms.CharField(widget=AdminPagedownWidget())
+    # content = forms.CharField(widget=AdminPagedownWidget())
+    formfield_overrides = {
+        models.TextField: {'widget': AdminPagedownWidget },
+    }
     class Meta:
         model = Post
 
