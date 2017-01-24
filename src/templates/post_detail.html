@@ -16,15 +16,14 @@
 <h1>{{ title }} <small> {% if instance.draft %}
   <span style="color:red;">Draft</span>
 {% endif %}
-
 {{ instance.publish }}</small></h1>
 {% if instance.user.get_full_name %}
 <p>Author: {{ instance.user.get_full_name }}</p>
 {% endif %}
 <div class="col-sm-10 col-sm-offset-1">
 {# content #}
-<div class="content-markdown">
-{{ instance.content}}<br/>
+<div class="post-detail-item">
+{{ instance.get_markdown|safe}}<br/>
 </div>
 
 <hr><br>

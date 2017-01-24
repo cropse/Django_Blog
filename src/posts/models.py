@@ -3,6 +3,7 @@ from django.db import models
 from django.db.models.signals import pre_save
 from django.conf import settings
 from django.utils import timezone
+from markdown2 import markdown
 
 from django.utils.text import slugify
 from unidecode import unidecode
@@ -46,6 +47,12 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-timestamp", "-updated"]
+
+    def get_markdown(self):
+        content = self.content
+        markdown_text = markdown(content)
+        return markdown_text
+
 
 def create_slug(instance, new_slug=None):
     slug = slugify(unidecode(instance.title))# fix unicode null in slugify
