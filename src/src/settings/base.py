@@ -33,9 +33,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 3rd
     "pagedown",
+    "crispy_forms",
     #local
     "posts",
 ]
+
+CRISPY_TEMPLATE_PACK = "bootstrap3"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
