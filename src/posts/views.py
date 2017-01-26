@@ -26,7 +26,7 @@ def post_create(request):
     context = {
         "form": form,
     }
-    return render(request, "post_form.html", context)
+    return render(request, "posts/post_form.html", context)
  
 def post_detail(request, slug=None):# retrieve
     instance = get_object_or_404(Post, slug=slug)
@@ -40,7 +40,7 @@ def post_detail(request, slug=None):# retrieve
         'share_string': share_string,
 
     }
-    return render(request, "post_detail.html", context)
+    return render(request, "posts/post_detail.html", context)
 
 def post_list(request):# list item
     today = timezone.now().date()
@@ -74,7 +74,7 @@ def post_list(request):# list item
         'page_request_var': page_request_var,
         'today': today,
     }
-    return render(request, "post_list.html", context)
+    return render(request, "posts/post_list.html", context)
 
 
 
@@ -96,7 +96,7 @@ def post_update(request, slug=None):
         'title': instance.title,
         'form':form,
     }
-    return render(request, "post_form.html", context)
+    return render(request, "posts/post_form.html", context)
 
 def post_delete(request, slug=None):
     if request.user.is_staff or not request.user.is_superuser:

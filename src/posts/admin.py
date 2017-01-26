@@ -1,5 +1,6 @@
 from django.contrib import admin
-from pagedown.widgets import AdminPagedownWidget
+# from pagedown.widgets import AdminPagedownWidget
+from ckeditor.widgets import CKEditorWidget
 from django import forms
 from django.db import models
 # Register your models here.
@@ -13,10 +14,10 @@ class PostModelAdmin(admin.ModelAdmin):
     list_editable = ['title']
     search_fields = ['title', 'content']
     # content = forms.CharField(widget=AdminPagedownWidget())
-    # content = forms.CharField(widget=AdminPagedownWidget())
-    formfield_overrides = {
-        models.TextField: {'widget': AdminPagedownWidget },
-    }
+    content = forms.CharField(widget=CKEditorWidget())
+    # formfield_overrides = {
+    #     models.TextField: {'widget': AdminPagedownWidget },
+    # }
     class Meta:
         model = Post
 

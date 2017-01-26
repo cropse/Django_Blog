@@ -4,6 +4,7 @@ from django.db.models.signals import pre_save
 from django.conf import settings
 from django.utils import timezone
 from markdown2 import markdown
+from ckeditor_uploader.fields import RichTextUploadingField
 
 from django.utils.text import slugify
 from unidecode import unidecode
@@ -29,9 +30,9 @@ class Post(models.Model):
             null=True, blank=True,
             width_field="width_field",
             height_field="height_field")
-    height_field = models.IntegerField(default=0)
-    width_field = models.IntegerField(default=0)
-    content = models.TextField()
+    height_field = models.IntegerField(null=True, default=0)
+    width_field = models.IntegerField(null=True, default=0)
+    content = RichTextUploadingField()
     draft = models.BooleanField(default=False)
     publish = models.DateField(auto_now=False, auto_now_add=False)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)

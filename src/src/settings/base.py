@@ -33,12 +33,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 3rd
     "pagedown",
-    "crispy_forms",
+    # "crispy_forms",
+    "ckeditor",
+    "ckeditor_uploader",
     #local
     "posts",
+    "pages",
 ]
 
-CRISPY_TEMPLATE_PACK = "bootstrap3"
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+# CRISPY_TEMPLATE_PACK = "bootstrap3"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -122,10 +127,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    # '/var/www/static/',
-]
+# for productions
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+#     # '/var/www/static/',
+# ]
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
