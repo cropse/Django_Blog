@@ -8,55 +8,75 @@
   <link rel="stylesheet" type="text/css" href="{% static "posts/css/post_list.css" %}">
 {% endblock head_extra %}
 
+{% block breadcrumb_detail %}
+    <li class="breadcrumb-item active">Posts</li>
+{% endblock breadcrumb_detail %}
+
 {% block content %}
-{{ block.super }}
-  <div class="col-sm-8 col-sm-offset-2">
-    <h1>{{ title }}</h1>
-    <form method="GET" action="" class="row">
-      <div class="col-md-8">
-        <div class="input-group">
-          <input type="text" class="form-control" name="user_search" value="{{ request.GET.user_search }}" placeholder="Search posts">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-primary">Search <i class="fa fa-search"></i></button>
-          </span>
-        </div>
-      </div>
-    </form>
-    <br>
-    {% for obj in object_list %}
-      <div class="row">
-        <div class="col-md-12">
+  {{ block.super }}
 
-          <div class="thumbnail {% if obj.status != 2 %} draft {% endif %}">
-          {% if obj.image %}
-            <img src="{{ obj.image.url }}" class="img-responsive">
-          {% endif %}
-            <div class="caption post-detail-item">
-            
-              {% if obj.status != 2 %}
-                <h3>Staff Only: Draft</h3>
-              {% endif %}
-              {% if obj.publication_date > today %}
-                <h3>Staff Only: Future Post</h3>
-              {% endif %}
-            
-              <h3><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> 
-              <small>{{ obj.creation_date }}</small></h3>
-
-              {{ obj.get_markdown|truncatewords_html:5|safe }}
-            
-              <p>Tag: {% for tag in obj.tags_list %}
-                {# add tag button for search function #}
-                {{ tag }}
-              {% endfor %}            
-            
-              <p><a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">View</a></p>
+  <div class="col-md-9 pull-md-3">
+    {# <h1>{{ title }}</h1> #}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card col-md-9">
+          
+        <form method="GET" action="" class="row">
+            <div class="input-group">
+              <input type="text" class="form-control" name="user_search" value="{{ request.GET.user_search }}" placeholder="Search posts">
+              <span class="input-group-btn">
+                <button type="submit" class=" btn btn-primary">Search <i class="fa fa-search"></i></button>
+              </span>
             </div>
-          </div>
-          <hr>
+        </form>
         </div>
       </div>
-    {% endfor %}
+    </div>
+    {# <div class="row"></div> #}
+    <p><br></p>
+    {% if object_list %}
+      {% for obj in object_list %}
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="card border-1 {% if obj.status != 2 %} draft {% endif %}">
+            {% if obj.image %}
+              <img src="{{ obj.image.url }}" class="img-fluid card-img-top" alt="Responsive image Card image cap">
+            {% endif %}
+              <h2 class="card-header"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> 
+              <small>{{ obj.creation_date }}</small></h2>
+
+              <div class="card-block caption post-detail-item">
+              
+                {% if obj.status != 2 %}
+                  <h3>Staff Only: Draft</h3>
+                {% endif %}
+                {% if obj.publication_date > today %}
+                  <h3>Staff Only: Future Post</h3>
+                {% endif %}
+              
+                  <p class="card-text">
+                    {{ obj.get_markdown|truncatewords_html:5|safe }}
+                  </p>
+              
+                <p>Tag: {% for tag in obj.tags_list %}
+                  {# add tag button for search function #}
+                  {# <span class="badge badge-default">{{ tag }}</span> #}
+                  <a href="?user_search={{ tag }}" class="badge badge-default">{{ tag }}</a>
+                  
+                {% endfor %}            
+                <p>
+                <a href="{{ obj.get_absolute_url }}" class="btn btn-primary btn-lg">View</a>
+                </p>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      {# Post not found #}
+    {% endif %}
 
     <div class="pagination">
     <span class="step-links">
@@ -77,6 +97,7 @@
     </div>
 
   </div>
+
 {% endblock content %}
 
 {% block script_extra %}

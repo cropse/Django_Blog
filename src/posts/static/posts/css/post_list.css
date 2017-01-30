@@ -4,3 +4,10 @@ h1{
 .draft{
     background-color: #bfbfbf;
 }
+small{
+    color: #8c8c8c;
+    font-size: 15px;
+}
+.btn{
+    margin-top: 3px;
+}
