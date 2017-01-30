@@ -25,13 +25,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',
+    'django.contrib.admin',
+    'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.contenttypes',    
     # 3rd
+    'django_comments',
+    'mptt',
+    'tagging',
+    'zinnia',
+    
     "pagedown",
     # "crispy_forms",
     "ckeditor",
@@ -68,6 +74,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
+                'zinnia.context_processors.version',  # Optional                
             ],
         },
     },
@@ -135,4 +143,13 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+
+
+# Setting of Zinnia
+SITE_ID = 1
+ZINNIA_ENTRY_BASE_MODEL = 'posts.models.MyEntry'
+ZINNIA_MARKUP_LANGUAGE = 'markdown'
+ZINNIA_ENTRY_CONTENT_TEMPLATES = [
+  ('zinna/base.html', 'Short entry template'),
+]
 

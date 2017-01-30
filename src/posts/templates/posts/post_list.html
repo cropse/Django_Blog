@@ -9,10 +9,11 @@
 {% endblock head_extra %}
 
 {% block content %}
-  <div class="col-sm-6 col-sm-offset-3">
+{{ block.super }}
+  <div class="col-sm-8 col-sm-offset-2">
     <h1>{{ title }}</h1>
     <form method="GET" action="" class="row">
-      <div class="col-sm-6">
+      <div class="col-md-8">
         <div class="input-group">
           <input type="text" class="form-control" name="user_search" value="{{ request.GET.user_search }}" placeholder="Search posts">
           <span class="input-group-btn">
@@ -24,25 +25,31 @@
     <br>
     {% for obj in object_list %}
       <div class="row">
-        <div class="col-sm-12">
-          <div class="thumbnail">
+        <div class="col-md-12">
+
+          <div class="thumbnail {% if obj.status != 2 %} draft {% endif %}">
           {% if obj.image %}
             <img src="{{ obj.image.url }}" class="img-responsive">
           {% endif %}
-
             <div class="caption post-detail-item">
-              {% if obj.draft %}
+            
+              {% if obj.status != 2 %}
                 <h3>Staff Only: Draft</h3>
               {% endif %}
-              {% if obj.publish > today %}
+              {% if obj.publication_date > today %}
                 <h3>Staff Only: Future Post</h3>
               {% endif %}
+            
               <h3><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> 
-              <small>{{ obj.publish }}</small></h3>
-              {% if obj.user.get_full_name %}  
-                <p>{{ obj.user.get_full_name }}</p>
-              {% endif %}
+              <small>{{ obj.creation_date }}</small></h3>
+
               {{ obj.get_markdown|truncatewords_html:5|safe }}
+            
+              <p>Tag: {% for tag in obj.tags_list %}
+                {# add tag button for search function #}
+                {{ tag }}
+              {% endfor %}            
+            
               <p><a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">View</a></p>
             </div>
           </div>

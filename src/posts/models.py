@@ -9,7 +9,51 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.text import slugify
 from unidecode import unidecode
 
-# Create your models here.
+from django.db import models
+# from zinnia.models import Entry
+from zinnia.models_bases.entry import AbstractEntry
+import re
+from tagging.models import Tag
+# class Picture(models.Model):
+#     title = models.CharField(max_length=50)
+#     image = models.ImageField(upload_to='gallery')
+
+# class Gallery(models.Model):
+#     title = models.CharField(max_length=50)
+#     pictures = models.ManyToManyField(Picture)
+
+# class MyManager(models.Manager):
+#     def get_tags(self, *args, **kwargs):
+#         # Post.object.all() = super(PostManager, self).all()
+#         return "123"
+#         # return super()# .filter(tags__iregex=r'\b%s\b' % tag)
+
+class MyEntry(AbstractEntry):
+
+    def active(self):
+        return self.advanced_search("ed")
+    def get_absolute_url(self):
+        return reverse("posts:detail", kwargs={'slug':self.slug})
+
+    def get_markdown(self):
+        content = self.content
+        markdown_text = markdown(content)
+        return markdown_text
+
+    # def get_tags(self):
+    #     tags = Tag.objects.all()
+    #     return tags
+
+    # def get_tags(self):
+    #     pass
+        # return Entry.objects.all()
+        # return self.objects.filter(tags__iregex=r'\b%s\b' % tag)
+
+    def __str__(self):
+        return 'EntryGallery %s' % self.title
+
+    class Meta(AbstractEntry.Meta):
+        abstract = True
 
 
 class PostManager(models.Manager):

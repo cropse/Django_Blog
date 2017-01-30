@@ -9,6 +9,19 @@ from django.db.models import Q
 # Create your views here.
 from .models import Post
 from .forms import PostForm
+from zinnia.models import Entry
+from zinnia.models import Category
+from zinnia.managers import tags_published
+# from .models import EntryGallery
+
+# from zinnia.views.search import EntrySearch
+
+def CustomTemplateEntrySearch(request):
+    # template_name = 'custom/base.html'
+    context = {
+        # "form": form,
+    }
+    return render(request, "zinna/base.html")
 
 def post_create(request):
     if not request.user.is_staff or not request.user.is_superuser:
@@ -29,10 +42,10 @@ def post_create(request):
     return render(request, "posts/post_form.html", context)
  
 def post_detail(request, slug=None):# retrieve
-    instance = get_object_or_404(Post, slug=slug)
-    if instance.draft or instance.publish > timezone.now().date():
-        if not request.user.is_staff or not request.user.is_superuser:
-            raise Http404
+    instance = get_object_or_404(Entry, slug=slug)
+    # if instance.draft or instance.publish > timezone.now().date():
+    #     if not request.user.is_staff or not request.user.is_superuser:
+    #         raise Http404
     share_string = quote_plus(instance.content)
     context = {
         'instance': instance,
@@ -44,18 +57,28 @@ def post_detail(request, slug=None):# retrieve
 
 def post_list(request):# list item
     today = timezone.now().date()
-    if request.user.is_staff or request.user.is_superuser:
-        queryset_list = Post.objects.all()
-    else:
-        queryset_list = Post.objects.active()
+
+    # print(dir(entries_published))
+    # queryset_list = Entry.published.on_site()
+
     search_list = request.GET.get("user_search")
     if search_list:
-        queryset_list = queryset_list.filter(
-            Q(title__icontains=search_list) |
-            Q(content__icontains=search_list)|
-            Q(user__first_name__icontains=search_list)|
-            Q(user__last_name__icontains=search_list)
-            )
+        queryset_list = Entry.published.search(search_list)
+    elif request.user.is_staff or request.user.is_superuser:
+        queryset_list = Entry.published.on_site()
+    else:
+        queryset_list = Entry.objects.filter(status=2)
+        
+    queryset = queryset_list
+    #     queryset_list = queryset_list.filter(
+    #         Q(title__icontains=search_list) |
+    #         Q(content__icontains=search_list)|
+    #         Q(user__first_name__icontains=search_list)|
+    #         Q(user__last_name__icontains=search_list)
+    #         )
+    print("Tagg")
+    # print(Entry.tags.title())
+
     paginator = Paginator(queryset_list, 5) # Show 5 contacts per page
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
@@ -69,8 +92,9 @@ def post_list(request):# list item
         queryset = paginator.page(paginator.num_pages)
 
     context = {
+        'entry': Entry,
         'object_list': queryset,
-        'title': "List",
+        'title': "Entry_List",
         'page_request_var': page_request_var,
         'today': today,
     }

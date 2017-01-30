@@ -7,8 +7,8 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 class PostForm(forms.ModelForm):
     # content = forms.CharField(widget=CKEditorWidget())
-    content = RichTextUploadingField()
-    publish = forms.DateField(widget=forms.SelectDateWidget)
+    # content = RichTextUploadingField()
+    # publish = forms.DateField(widget=forms.SelectDateWidget)
     class Meta:
         model = Post
         fields = [

@@ -6,9 +6,11 @@ SECRET_KEY = 'lf5^105_(pe3#4v^^&mp)mq197elaz$#^8d#f*$*zvu@1_j9dg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
+
+
 
 DATABASES = {
     'default': {
