@@ -8,15 +8,11 @@
   <link rel="stylesheet" type="text/css" href="{% static "posts/css/post_list.css" %}">
 {% endblock head_extra %}
 
-{% block breadcrumb_detail %}
-    <li class="breadcrumb-item active">Posts</li>
-{% endblock breadcrumb_detail %}
-
 {% block content %}
   {{ block.super }}
-
   <div class="col-md-9 pull-md-3">
     {# <h1>{{ title }}</h1> #}
+
     <div class="row">
       <div class="col-md-12">
         <div class="card col-md-9">
@@ -25,7 +21,7 @@
             <div class="input-group">
               <input type="text" class="form-control" name="user_search" value="{{ request.GET.user_search }}" placeholder="Search posts">
               <span class="input-group-btn">
-                <button type="submit" class=" btn btn-primary">Search <i class="fa fa-search"></i></button>
+                <button type="submit" style="margin-top: 0px" class=" btn btn-primary">Search <i class="fa fa-search"></i></button>
               </span>
             </div>
         </form>

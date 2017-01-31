@@ -6,26 +6,22 @@
 {{ instance.title }}|{{ block.super }}    
 {% endblock head_title %}
 
-{% block breadcrumb_detail %}
-    <li class="breadcrumb-item"><a href="{% url "posts:list" %}">Posts</a></li>
-    <li class=" breadcrumb-item active">{{ instance.title }}</li>
-{% endblock breadcrumb_detail %}
-
 {% block content %}
   {{ block.super }}
-{# {{ share_string }}<br> #}
-{# {{ instance.content|urlify }} #}
-  {# <div class="row"> #}
+
 <div class="col-md-9 pull-md-3">
-  {% if instance.image %}
-    <img src="{{ instance.image.url }}" class="img-fluid" alt="Responsive image">
-  {% endif %}
+
   <h1>{{ title }} <small> {% if instance.draft %}
     <span style="color:red;">Draft</span>
   {% endif %}
   {{ instance.publish }}</small></h1>
-  {% if instance.user.get_full_name %}
-  <p>Author: {{ instance.user.get_full_name }}</p>
+
+    Updated {{ instance.publication_date|timesince }} ago<br/>
+      <hr>
+
+    {# Main-image #}
+  {% if instance.image %}
+    <img src="{{ instance.image.url }}" class="img-fluid" alt="Responsive image">
   {% endif %}
 
   <div class="col-md-9">
@@ -34,8 +30,7 @@
     {{ instance.get_markdown|safe}}<br/>
     </div>
 
-    <hr><br>
-    Updated {{ instance.publication_date|timesince }} ago<br/>
+
 
     <p>
     {% if request.user.is_staff %}

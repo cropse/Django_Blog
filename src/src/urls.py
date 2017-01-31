@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from pages.views import soundcloud
+from gallery.views import gallery
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,6 +27,7 @@ urlpatterns = [
     # url(r'^weblog/', include('zinnia.urls')),
     url(r'^comments/', include('django_comments.urls')),
     url(r'^soundcloud/$', soundcloud, name="soundcloud"),
+    url(r'^gallery/$', gallery, name="gallery"),
 ]
 
 if settings.DEBUG:

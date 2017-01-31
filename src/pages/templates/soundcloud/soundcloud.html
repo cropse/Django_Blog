@@ -1,5 +1,12 @@
 {% extends "base/base.html" %}
 
+  <title>{% block head_title %}
+    soundcloud
+  {% endblock head_title %}</title>
+
+  {% block head_extra %}
+  {% endblock head_extra %}
+
 {% block content %}
   <div id="test"></div>
 
@@ -9,7 +16,7 @@
 {% block script_extra %}
   <script>
   $(document).ready(function(){
-    $( "#test" ).load("https://soundcloud.com/cropse/tracks" );
+    // $("#test").load("" );
     console.log("123");
   });
   </script>  
