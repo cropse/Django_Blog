@@ -13,7 +13,7 @@ from django.db import models
 # from zinnia.models import Entry
 from zinnia.models_bases.entry import AbstractEntry
 import re
-from tagging.models import Tag
+
 # class Picture(models.Model):
 #     title = models.CharField(max_length=50)
 #     image = models.ImageField(upload_to='gallery')

@@ -16,6 +16,18 @@
 
   <!-- side Bar -->
   <div class="col-md-3 push-md-9"> 
+
+  <div width="100%">
+<div class="fb-page" data-href="https://www.facebook.com/Cropse-1507642772825208/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Cropse-1507642772825208/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Cropse-1507642772825208/">Cropse</a></blockquote></div>
+
+
+</div>
+<div>
+{# Adding the SoundCloud embedded Code #}
+<iframe width="100%" height="300" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/236913528&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+  </div>
+
+
   {# {% tags_list %} #}
   Tag:
   <form action="" method="get">
@@ -52,3 +64,26 @@ Recent Post:
   </div>
 
 {% endblock content %}
+
+{% block script_extra %}
+<style type="text/css">
+  /* 這個元素內嵌在 iframes 裡，有可能造成部分 layout 變形，所以請把它隱藏 */
+#fb-root {
+    display: none;
+}
+
+/* 讓所有容器的寬度都變成 100% */
+.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+    width: 100% !important;
+}
+</style>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=1085995668162713";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{% endblock script_extra %}

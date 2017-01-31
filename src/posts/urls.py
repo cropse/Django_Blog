@@ -19,7 +19,7 @@ urlpatterns = [
     url(r'^$', post_list, name='list'),
     # url(r'^(?P<slug>[\w-]+)/edit/$', post_update, name='update'),
     url(r'^(?P<slug>[\w-]+)/delete/$', post_delete),
-    url(r'^123/$', CustomTemplateEntrySearch),
+    # url(r'^123/$', CustomTemplateEntrySearch),
         # url(r'^$', EntrySearch.as_view(
         # template_name='custom/base.html'),
         # name='entry_search'),

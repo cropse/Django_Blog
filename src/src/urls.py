@@ -17,17 +17,15 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-
-from zinnia.views.search import EntrySearch
-from posts.views import CustomTemplateEntrySearch
+from pages.views import soundcloud
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^posts/', include("posts.urls", namespace='posts')),
     # url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    url(r'^weblog/', include('zinnia.urls')),
+    # url(r'^weblog/', include('zinnia.urls')),
     url(r'^comments/', include('django_comments.urls')),
-    url(r'^blog/', CustomTemplateEntrySearch, name='my_blog'),
+    url(r'^soundcloud/$', soundcloud, name="soundcloud"),
 ]
 
 if settings.DEBUG:

@@ -40,6 +40,7 @@
           <div class="col-md-12">
 
             <div class="card border-1 {% if obj.status != 2 %} draft {% endif %}">
+
             {% if obj.image %}
               <img src="{{ obj.image.url }}" class="img-fluid card-img-top" alt="Responsive image Card image cap">
             {% endif %}
@@ -101,5 +102,6 @@
 {% endblock content %}
 
 {% block script_extra %}
+  {{ block.super }}
   <script src="{% static 'posts/js/post_list.js' %}"></script>
 {% endblock script_extra %}
