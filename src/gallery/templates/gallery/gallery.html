@@ -11,17 +11,22 @@
 
 
 {% block content %}
-
+  <div class="container-fluid">
+  <h1>作品集</h1>
+  <div class="row">
+    
   {% for gallery in gallery_set %}
   {% if is_folder %}
     <div><img src="{{ gallery.url }}"></div>
   {% else %}
-    <a href="{% url "gallery" gallery.folder_id %}"><img src="{{ gallery.url }}"></a>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 img-thumbnail img-fluid">
+      <a title="image" href="{% url "gallery" gallery.folder_id %}" data-toggle="lightbox" data-gallery="example-gallery" data-type="image">
+      <img src="{{ gallery.url }}" alt=""/></a>
+    </div>
   {% endif %}
-    
-    
-    
   {% endfor %}
+  </div>
+</div>
 {% endblock content %}
 
 {% block script_extra %}
