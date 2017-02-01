@@ -1,13 +1,15 @@
 from django.db import models
+# from filer.fields.image import FilerImageField
+# from filer.fields.file import FilerFileField
 
-def user_directory_path(instance, filename):
-    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-    return 'user_{0}/{1}'.format(instance.id, filename)
 
-class Picture(models.Model):
-    title = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='gallery')
+# abstract Model In filer is broken for now
 
-class Gallery(models.Model):
-    title = models.CharField(max_length=50)
-    pictures = models.ManyToManyField(Picture)
+# from filer.models.abstract import BaseImage
+
+# class CustomImage(BaseImage):
+#     # my_field = models.CharField(max_length=10)
+
+#     class Meta:
+#         # You must define a meta with en explicit app_label
+#         app_label = 'gallery'

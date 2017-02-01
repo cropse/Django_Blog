@@ -11,7 +11,17 @@
 
 
 {% block content %}
-  <div id="test"></div>
+
+  {% for gallery in gallery_set %}
+  {% if is_folder %}
+    <div><img src="{{ gallery.url }}"></div>
+  {% else %}
+    <a href="{% url "gallery" gallery.folder_id %}"><img src="{{ gallery.url }}"></a>
+  {% endif %}
+    
+    
+    
+  {% endfor %}
 {% endblock content %}
 
 {% block script_extra %}

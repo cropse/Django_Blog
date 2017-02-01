@@ -32,12 +32,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.contenttypes',    
-    # 3rd
+    # filer package
+    'easy_thumbnails',
+    'filer',
+    # 'mptt', # duplicate app
+    # zinnia package
     'django_comments',
     'mptt',
     'tagging',
     'zinnia',
-    
+
     "pagedown",
     # "crispy_forms",
     "ckeditor",
@@ -153,4 +157,15 @@ ZINNIA_MARKUP_LANGUAGE = 'markdown'
 ZINNIA_ENTRY_CONTENT_TEMPLATES = [
   ('zinna/base.html', 'Short entry template'),
 ]
+
+# Setting of filer
+# FILER_IMAGE_MODEL = 'gallery.models.CustomImage'
+THUMBNAIL_HIGH_RESOLUTION = True
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    #'easy_thumbnails.processors.scale_and_crop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+)
 

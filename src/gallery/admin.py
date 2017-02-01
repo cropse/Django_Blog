@@ -1,17 +1,9 @@
 from django.contrib import admin
+# from django.contrib.contenttypes.admin import GenericTabularInline
+# from .models import Gallery
 
-from .models import Gallery, Picture
-# Register your models here.
-class GalleryAdmin(admin.ModelAdmin):
-    """docstring for GalleryAdmin"""
-    class Meta:
-        model = Gallery
 
-admin.site.register(Gallery, GalleryAdmin)
-
-class PictureAdmin(admin.ModelAdmin):
-    """docstring for PictureAdmin"""
-    class Meta:
-        model = Picture
-
-admin.site.register(Picture, PictureAdmin)
+# @admin.register(Gallery)
+# class GalleryAdmin(admin.ModelAdmin):
+#     """docstring for GalleryAdmin"""
+#     # filter_horizontal = ['picture']

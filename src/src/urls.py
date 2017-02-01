@@ -24,10 +24,11 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^posts/', include("posts.urls", namespace='posts')),
     # url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    # url(r'^weblog/', include('zinnia.urls')),
+    url(r'^weblog/', include('zinnia.urls')),
+    url(r'^filer/', include('filer.urls')),
     url(r'^comments/', include('django_comments.urls')),
     url(r'^soundcloud/$', soundcloud, name="soundcloud"),
-    url(r'^gallery/$', gallery, name="gallery"),
+    url(r'^gallery/(?P<folder_id>\d*)$', gallery, name="gallery"),
 ]
 
 if settings.DEBUG:

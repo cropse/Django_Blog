@@ -1,14 +1,14 @@
-from urllib.parse import quote_plus
+# from urllib.parse import quote_plus
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils import timezone
-from django.db.models import Q
+# from django.db.models import Q
 
 # Create your views here.
-from .models import Post
-from .forms import PostForm
+# from .models import Post
+# from .forms import PostForm
 from zinnia.models import Entry
 from zinnia.models import Category
 from zinnia.managers import tags_published
@@ -16,30 +16,23 @@ from zinnia.managers import tags_published
 
 # from zinnia.views.search import EntrySearch
 
-def CustomTemplateEntrySearch(request):
-    # template_name = 'custom/base.html'
-    context = {
-        # "form": form,
-    }
-    return render(request, "zinna/base.html")
+# def post_create(request):
+#     if not request.user.is_staff or not request.user.is_superuser:
+#         raise Http404
 
-def post_create(request):
-    if not request.user.is_staff or not request.user.is_superuser:
-        raise Http404
-
-    form = PostForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        print(form.cleaned_data.get("title"))
-        instance = form.save(commit=False)
-        instance.user = request.user
-        instance.save()
-        # message success
-        messages.success(request, "Successfully Create")
-        return HttpResponseRedirect(instance.get_absolute_url())
-    context = {
-        "form": form,
-    }
-    return render(request, "posts/post_form.html", context)
+#     form = PostForm(request.POST or None, request.FILES or None)
+#     if form.is_valid():
+#         print(form.cleaned_data.get("title"))
+#         instance = form.save(commit=False)
+#         instance.user = request.user
+#         instance.save()
+#         # message success
+#         messages.success(request, "Successfully Create")
+#         return HttpResponseRedirect(instance.get_absolute_url())
+#     context = {
+#         "form": form,
+#     }
+#     return render(request, "posts/post_form.html", context)
  
 def post_detail(request, slug=None):# retrieve
     instance = get_object_or_404(Entry, slug=slug)
@@ -103,29 +96,29 @@ def post_list(request):# list item
 
 
 
-def post_update(request, slug=None):
-    if not request.user.is_staff or not request.user.is_superuser:
-        raise Http404 
-    instance = get_object_or_404(Post, slug=slug)
-    form = PostForm(request.POST or None, request.FILES or None, instance=instance)
-    # form is posted
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.save()
-        messages.success(request, "<a href='#'>Item</a> Edit", extra_tags="html-safe")
-        return HttpResponseRedirect(instance.get_absolute_url())
-    # load old instance
-    context = {
-        'instance': instance,
-        'title': instance.title,
-        'form':form,
-    }
-    return render(request, "posts/post_form.html", context)
+# def post_update(request, slug=None):
+#     if not request.user.is_staff or not request.user.is_superuser:
+#         raise Http404 
+#     instance = get_object_or_404(Post, slug=slug)
+#     form = PostForm(request.POST or None, request.FILES or None, instance=instance)
+#     # form is posted
+#     if form.is_valid():
+#         instance = form.save(commit=False)
+#         instance.save()
+#         messages.success(request, "<a href='#'>Item</a> Edit", extra_tags="html-safe")
+#         return HttpResponseRedirect(instance.get_absolute_url())
+#     # load old instance
+#     context = {
+#         'instance': instance,
+#         'title': instance.title,
+#         'form':form,
+#     }
+#     return render(request, "posts/post_form.html", context)
 
-def post_delete(request, slug=None):
-    if request.user.is_staff or not request.user.is_superuser:
-        raise Http404    
-    instance = get_object_or_404(Post, slug=slug)
-    instance.delete()
-    messages.success(request, "Successfully Delete")
-    return redirect("posts:list")
+# def post_delete(request, slug=None):
+#     if request.user.is_staff or not request.user.is_superuser:
+#         raise Http404    
+#     instance = get_object_or_404(Post, slug=slug)
+#     instance.delete()
+#     messages.success(request, "Successfully Delete")
+#     return redirect("posts:list")
