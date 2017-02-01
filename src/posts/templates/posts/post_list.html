@@ -10,12 +10,12 @@
 
 {% block content %}
   {{ block.super }}
-  <div class="col-md-9 pull-md-3">
+  <div class="col-sm-12 col-md-9 pull-md-3 ">
     {# <h1>{{ title }}</h1> #}
 
     <div class="row">
-      <div class="col-md-12">
-        <div class="card col-md-9">
+      <div class="col-12">
+        <div class="card col-12">
           
         <form method="GET" action="" class="row">
             <div class="input-group">
@@ -33,12 +33,12 @@
     {% if object_list %}
       {% for obj in object_list %}
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-12">
 
             <div class="card border-1 {% if obj.status != 2 %} draft {% endif %}">
 
             {% if obj.image %}
-              <img src="{{ obj.image.url }}" class="img-fluid card-img-top" alt="Responsive image Card image cap">
+              <img src="{{ obj.image.url }}" style="width: 100%;" class="img-fluid card-img-top" alt="Responsive Card image cap">
             {% endif %}
               <h2 class="card-header"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> 
               <small>{{ obj.creation_date }}</small></h2>

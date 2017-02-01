@@ -39,11 +39,11 @@ def post_detail(request, slug=None):# retrieve
     # if instance.draft or instance.publish > timezone.now().date():
     #     if not request.user.is_staff or not request.user.is_superuser:
     #         raise Http404
-    share_string = quote_plus(instance.content)
+    # share_string = quote_plus(instance.content)
     context = {
         'instance': instance,
         'title': instance.title,
-        'share_string': share_string,
+        # 'share_string': share_string,
 
     }
     return render(request, "posts/post_detail.html", context)
