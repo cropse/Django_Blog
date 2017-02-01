@@ -38,7 +38,7 @@
             <div class="card border-1 {% if obj.status != 2 %} draft {% endif %}">
 
             {% if obj.image %}
-              <img src="{{ obj.image.url }}" style="width: 100%;" class="img-fluid card-img-top" alt="Responsive Card image cap">
+              <img src="{{ obj.image.url }}" style="width: 100%" class="img-fluid card-img-top" alt="Responsive Card image cap">
             {% endif %}
               <h2 class="card-header"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> 
               <small>{{ obj.creation_date }}</small></h2>
