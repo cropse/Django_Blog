@@ -22,7 +22,10 @@
   <form action="" method="get">
     {% tags_list as tags %}
     {% for tag in tags %}
-      <button class="btn btn-outline-primary" name="user_search" type="submit" value={{ tag }}>{{ tag }}</button>
+
+      
+      <button class="btn {% if tag.count >= 3 %} btn-danger btn-lg{% elif tag.count >= 2%} btn-warning {% else %}btn-primary btn-sm{% endif %} 
+      " name="user_search" type="submit" value={{ tag }}>{{ tag }}</button>
     {% endfor %}
   </form>
 
