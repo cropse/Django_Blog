@@ -17,19 +17,11 @@
       <div class="col-12">
         <div class="card col-12">
           
-        <form method="GET" action="" class="row">
-            <div class="input-group">
-              <input type="text" class="form-control" name="user_search" value="{{ request.GET.user_search }}" placeholder="Search posts">
-              <span class="input-group-btn">
-                <button type="submit" style="margin-top: 0px" class=" btn btn-primary">Search <i class="fa fa-search"></i></button>
-              </span>
-            </div>
-        </form>
         </div>
       </div>
     </div>
     {# <div class="row"></div> #}
-    <p><br></p>
+    
     {% if object_list %}
       {% for obj in object_list %}
         <div class="row">
