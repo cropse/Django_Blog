@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.db import models
 # Register your models here.
 # from .models import Post
-
+from pagedown.widgets import AdminPagedownWidget
 
 from django.utils.translation import ugettext_lazy as _
 from zinnia.models.entry import Entry
@@ -30,6 +30,9 @@ from zinnia.admin.entry import EntryAdmin
 # admin.site.register(Post, PostModelAdmin)
 
 class EntryGalleryAdmin(EntryAdmin):
+  formfield_overrides = {
+      models.TextField: {'widget': AdminPagedownWidget },
+  }
   # In our case we put the gallery field
   # into the 'Content' fieldset
   fieldsets = (

@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     "pagedown",
     # "crispy_forms",
     "ckeditor",
-    "ckeditor_uploader",
+    # "ckeditor_uploader",
     #local
     "gallery",
     "posts",
@@ -168,4 +168,7 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters',
 )
+
+# setting of ckeditor
+
 

@@ -1,0 +1,41 @@
+{% extends "base/base.html" %}
+
+  <title>{% block head_title %}
+    soundcloud
+  {% endblock head_title %}</title>
+
+  {% block head_extra %}
+  {% endblock head_extra %}
+
+{% block content %}
+<!-- Title -->
+<div class="row">
+
+</div>
+<!-- Image -->
+<div class="row">
+<div class="col-md-12">
+{{ Introduce.title }}
+</div>
+<div class="col-md-12">
+<img src="{{ introduce.image }}">
+
+</div>
+<div class="col-md-12">
+{{ Introduce.get_markdown|safe|linebreaks }}
+
+</div>
+</div>
+<!-- Content -->
+
+
+{% endblock content %}
+
+{% block script_extra %}
+  <script>
+  $(document).ready(function(){
+    // $("#test").load("" );
+    console.log("123");
+  });
+  </script>  
+{% endblock script_extra %}

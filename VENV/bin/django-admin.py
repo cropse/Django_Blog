@@ -1,4 +1,4 @@
-#!/Users/cropse/Dropbox/WebsiteProject/DjangoTempProject/VENV/bin/python3.5
+#!/Users/cropse/Dropbox/WebsiteProject/Blog/VENV/bin/python3.5
 from django.core import management
 
 if __name__ == "__main__":
