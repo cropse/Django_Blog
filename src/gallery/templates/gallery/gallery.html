@@ -19,7 +19,7 @@
   {% if is_folder %}
     <div><img src="{{ gallery.url }}"></div>
   {% else %}
-    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 img-fluid">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 img-fluid">
       <a title="image" href="{% url "gallery" gallery.folder_id %}" data-toggle="lightbox" data-gallery="example-gallery" data-type="image">
       <img src="{{ gallery.url }}" alt=""/></a>
     </div>
