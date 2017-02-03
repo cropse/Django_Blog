@@ -1,12 +1,54 @@
-h1 {
-    color: red;
+﻿/*文章區塊整體*/
+.card {
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }
 
+/*草稿card-block區塊背景*/
 .draft {
-    background-color: #bfbfbf;
+    background-color: #B6B9BF;
 }
 
-small {
-    color: #8c8c8c;
+/*文章標題日期區塊*/
+.card-header {
+	background-color: #D2D2D4;
+	border-bottom: solid 1px #B6B9BF;
+}
+
+/*文章標題*/
+.card-header a {
+	color: #292b2c;
+}
+
+/*文章發文日期*/
+.card-header small {
+	position: relative;
+	top: 0.5rem;
+	float: right;
     font-size: 15px;
+    color: #292b2c;
+}
+
+/*文章內容預覽區塊*/
+.card-block {
+	overflow: hidden;
+}
+
+/*文章標籤區塊*/
+.card-tag {
+	margin-bottom: 0px;
+}
+
+/*文章標籤連結*/
+.card-tag a {
+	display: inline;
+}
+
+/*文章內容預覽*/
+.card-text {
+	color: #292b2c;
+}
+
+/*繼續閱讀按鈕*/
+.read {
+	float: right;
 }

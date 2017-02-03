@@ -11,23 +11,16 @@
 {% block content %}
   {{ block.super }}
   <div class="col-lg-9 pull-lg-3 col-md-9 pull-md-3 col-sm-12 col-12">
-    {# <h1>{{ title }}</h1> #}
-
-    {# <div class="row"></div> #}
-    
+    <div class="row">
     {% if object_list %}
       {% for obj in object_list %}
-        <div class="row">
           <div class="col-12">
-
             <div class="card border-1 {% if obj.status != 2 %} draft {% endif %}">
-
             {% if obj.image %}
-              <img src="{{ obj.image.url }}" style="width: 100%" class="img-fluid card-img-top" alt="Responsive Card image cap">
+              <img src="{{ obj.image.url }}" width="100%" class="img-fluid card-img-top" alt="Responsive Card image cap">
             {% endif %}
-              <h2 class="card-header"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> 
+              <h2 class="card-header"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a>
               <small>{{ obj.creation_date }}</small></h2>
-
               <div class="card-block caption post-detail-item">
               
                 {% if obj.status != 2 %}
@@ -37,29 +30,29 @@
                   <h3>Staff Only: Future Post</h3>
                 {% endif %}
               
-                  <p class="card-text">
-                    {{ obj.get_markdown|truncatewords_html:5|safe }}
-                  </p>
-              
-                <p>Tag: {% for tag in obj.tags_list %}
+                <div class="card-text">
+                  {{ obj.get_markdown|truncatewords_html:5|safe }}
+                </div>
+                <p class="card-tag">Tag: {% for tag in obj.tags_list %}
+                  <a href="?user_search={{ tag }}" class="badge btn-primary">{{ tag }}</a>
+                                  
                   {# add tag button for search function #}
                   {# <span class="badge badge-default">{{ tag }}</span> #}
-                  <a href="?user_search={{ tag }}" class="badge badge-default">{{ tag }}</a>
-                  
+
                 {% endfor %}            
-                <p>
-                <a href="{{ obj.get_absolute_url }}" class="btn btn-primary btn-lg">View</a>
                 </p>
+                <a href="{{ obj.get_absolute_url }}" class="btn btn-primary btn-lg read">View <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                
               </div>
             </div>
             <hr>
           </div>
-        </div>
+        
       {% endfor %}
     {% else %}
       {# Post not found #}
     {% endif %}
-
+    </div>
     <div class="pagination">
     <span class="step-links">
         {% if object_list.has_previous %}
