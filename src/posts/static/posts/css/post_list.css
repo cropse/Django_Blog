@@ -1,13 +1,17 @@
-h1{
+h1 {
     color: red;
 }
-.draft{
+
+.draft {
     background-color: #bfbfbf;
 }
-small{
+
+small {
     color: #8c8c8c;
     font-size: 15px;
 }
-.btn{
-    margin-top: 3px;
+
+.fb-page {
+	/*width: 100%;
+	height: auto;*/
 }
