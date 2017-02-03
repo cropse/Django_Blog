@@ -15,7 +15,6 @@ img:hover {
 	transform: scale(1.05);
 }
 
-.img-thumbnail {
-	background-color: #B6B9BF;
-	border: solid 1px #797B7F;
+.img-fluid {
+	padding: 2px;
 }
