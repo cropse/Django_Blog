@@ -14,8 +14,12 @@ def current_time():
 
 @register.assignment_tag
 def tags_list():
-    # order by most used not done yet
-    return list(Tag.objects.all())
+    # order by most post used
+    tag_set = Tag.objects.usage_for_model(Entry, counts=True)
+    # print(sorted(tag_set, key=lambda li: li.count, reverse=True))
+    tag_set = sorted(tag_set, key=lambda li: li.count, reverse=True)
+    # there is tag_set in tag.name and tag.count
+    return tag_set
 
 @register.assignment_tag
 def Category_list():

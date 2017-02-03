@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from filer.models.filemodels import File, Folder
 
+
 # Create your views here.
 def gallery(request, folder_id=None):
 
@@ -13,7 +14,7 @@ def gallery(request, folder_id=None):
     if folder_id:
         gallery_set = File.objects.filter(folder_id=folder_id)
     else:
-        gallery_set = File.objects.filter(name="Icon")
+        gallery_set = File.objects.filter(name__iexact="icon")
 
     context = {
     'gallery_set': gallery_set,

@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelavent variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/cropse/Dropbox/WebsiteProject/DjangoTempProject/VENV"
+VIRTUAL_ENV="/Users/cropse/Dropbox/WebsiteProject/Blog/VENV"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
@@ -75,4 +75,5 @@ if [ -n "$BASH" -o -n "$ZSH_VERSION" ] ; then
     hash -r
 fi
 alias pm="python manage.py"
+alias pmrs="python manage.py runserver"
 export DJANGO_SETTINGS_MODULE=src.settings.local

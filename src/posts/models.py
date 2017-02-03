@@ -13,6 +13,8 @@ from django.db import models
 # from zinnia.models import Entry
 from zinnia.models_bases.entry import AbstractEntry
 
+from django.contrib import admin
+
 
 class MyEntry(AbstractEntry):
 
