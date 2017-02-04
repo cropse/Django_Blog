@@ -19,10 +19,49 @@ body {
 	cursor: pointer;
 }
 
+/*FB widget區塊*/
+.fb-page {
+	width: 100%;
+}
+
 /*soundcloud區塊*/
-.soundcloudblock {
+.soundcloud-block {
 	margin-top: 50px;
 }
+
+/*tag cate entry三區塊外層*/
+.tcp-block {
+	margin-top: 50px;
+	background-color: #f7f7f9;
+	border-radius: 4px;
+	overflow: hidden;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+/*三區塊與字的行高*/
+.tags-block, .cate-block, .post-block {
+	margin-top: 15px;
+	padding: 20px;
+}
+
+/*----------以下為文章內文頁面----------*/
+
+/*文章內文*/
+.post-detail-item {
+	display: block;
+	max-width: 100%;
+	overflow: hidden;
+}
+
+/*文章內文整體區塊*/
+.entry {
+	background-color: #f7f7f9;
+	color: #292b2c;
+	border-radius: 4px;
+	padding: 20px;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+
 
 /*手機瀏覽時facebook&soundcloud區塊隱藏*/
 @media screen and (max-width: 767px) {
