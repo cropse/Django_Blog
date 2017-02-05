@@ -4,55 +4,58 @@
 {% block content %}
 
   <!-- side Bar -->
-<div class="col-md-3 push-md-9 col-sm-12 fbsc">
-  <div class="fb-page" data-href="https://www.facebook.com/Cropse-1507642772825208/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-    <blockquote cite="https://www.facebook.com/Cropse-1507642772825208/" class="fb-xfbml-parse-ignore">
-      <a href="https://www.facebook.com/Cropse-1507642772825208/">Cropse</a>
-    </blockquote>
+<div class="col-lg-3 push-lg-9 col-md-3 push-md-9 fbsc">
+<div class="row">
+  <div class="col-12">
+    <div class="fb-page" data-href="https://www.facebook.com/Cropse-1507642772825208/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+      <blockquote cite="https://www.facebook.com/Cropse-1507642772825208/" class="fb-xfbml-parse-ignore">
+        <a href="https://www.facebook.com/Cropse-1507642772825208/">Cropse</a>
+      </blockquote>
+    </div>
+    <div class="soundcloud-block">
+  {# Adding the SoundCloud embedded Code #}
+      <iframe width="100%" height="200" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/236913528&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true">
+      </iframe>
+    </div>
+    
+        <div class="tcp-block">
+          {# {% tags_list %} #}
+          
+          <form class="tags-block" action="" method="get">          
+            <h6>Tag:</h6>
+            {% tags_list as tags %}
+            {% for tag in tags %}              
+              <button class="btn {% if tag.count >= 3 %} btn-danger btn-lg{% elif tag.count >= 2%} btn-warning {% else %}btn-primary btn-sm{% endif %} 
+              " name="user_search" type="submit" value={{ tag }}>{{ tag }}</button>
+            {% endfor %}          
+          </form>
+         
+          {# {% Category_list %} #}
+          
+          <form class="cate-block" action="" method="get">          
+          <h6>Category:</h6>
+            <ul>
+              {% Category_list as Categories %}
+              {% for category in Categories %}
+                <li>
+                  <a href="?category_search={{ category.title }}">
+                    {{ category.title }}({{ category.entries.count }})  
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>          
+          </form>
+          
+          <form class="post-block" action="" method="get">          
+          <h6>Recent Post:</h6>
+            {% get_recent_entries 3 %}
+            {# {% get_calendar_entries 2017 %} #}
+            {# {{ entry.tags_list }} #}
+          </form>
+          
+        </div>
+    </div>
   </div>
-  <div class="soundcloudblock">
-{# Adding the SoundCloud embedded Code #}
-    <iframe width="100%" height="200" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/236913528&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true">
-    </iframe>
-  </div>
-
-
-  {# {% tags_list %} #}
-  Tag:
-  <form action="" method="get">
-    {% tags_list as tags %}
-    {% for tag in tags %}
-
-      
-      <button class="btn {% if tag.count >= 3 %} btn-danger btn-lg{% elif tag.count >= 2%} btn-warning {% else %}btn-primary btn-sm{% endif %} 
-      " name="user_search" type="submit" value={{ tag }}>{{ tag }}</button>
-    {% endfor %}
-  </form>
-
-<br>
-Category: 
-  {# {% Category_list %} #}
-  <form action="" method="get">
-    <ul>
-      {% Category_list as Categories %}
-      {% for category in Categories %}
-        <li>
-        
-          <a href="?category_search={{ category.title }}">
-            {{ category.title }}({{ category.entries.count }})  
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </form>
-
-
-Recent Post:
-  {% get_recent_entries 3 %}
-
-  {# {% get_calendar_entries 2017 %} #}
-  {# {{ entry.tags_list }} #}
-
 </div>
 
 {% endblock content %}

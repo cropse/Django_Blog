@@ -34,13 +34,13 @@
       <li class="nav-item ">
         <a class="nav-link" href="{% url "about_me" %}">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="{% url "soundcloud" %}">SoundCloud</a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="{% url "posts:list" %}">Blog</a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="{% url "gallery" Null %}">Gallery</a>
       </li>
     </ul>
@@ -55,10 +55,8 @@
 </nav>
 <!-- End -->
 
-<div class="container">
-
+<div class="container article">
   {% include "base/messages_display.html" %}
-
   <div class="row">
     {% block content %}
       

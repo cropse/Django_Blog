@@ -1,17 +1,51 @@
-h1 {
-    color: red;
+/*文章預覽整體區塊*/
+.card {
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }
 
+/*未發佈草稿*/
 .draft {
-    background-color: #bfbfbf;
+    border: solid 5px #0275d8;
 }
 
-small {
-    color: #8c8c8c;
+/*文章預覽區塊*/
+.card-block {
+	background-color: #f7f7f9;
+	overflow: hidden;
+}
+
+/*文章標題區塊*/
+.card-header {
+	border-bottom: hidden;
+	padding: 0px;
+	margin-bottom: 16px;
+}
+
+/*文章標題區塊連結*/
+.card-header a {
+	color: #292b2c;
+}
+
+/*文章預覽區虛線*/
+hr {
+	margin: 16px 0px;
+}
+
+/*文章撰寫日期*/
+.card-header small {
+	position: relative;
+	top: 8px;
+	float: right;
     font-size: 15px;
+    color: #292b2c;
 }
 
-.fb-page {
-	/*width: 100%;
-	height: auto;*/
+/*文章預覽標籤*/
+.card-tag a {
+	display: inline;
+}
+
+/*繼續閱讀按鈕*/
+.read {
+	float: right;
 }
