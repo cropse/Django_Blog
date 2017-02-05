@@ -101,3 +101,11 @@ VENV_*/
 # custom file
 static_cdn
 media_cdn
+src/src/settings/production.py
+Cropse.pem
+credentials.csv
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
