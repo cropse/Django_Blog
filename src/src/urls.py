@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^filer/', include('filer.urls')),
     url(r'^comments/', include('django_comments.urls')),
     url(r'^soundcloud/$', soundcloud, name="soundcloud"),
-    url(r'^about_me/$', about_me, name="about_me"),
+    url(r'^$', about_me, name="about_me"),
     url(r'^gallery/(?P<folder_id>\d*)$', gallery, name="gallery"),
 ]
 
