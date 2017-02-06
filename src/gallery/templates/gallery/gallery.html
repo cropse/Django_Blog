@@ -18,43 +18,32 @@
   {% for gallery in gallery_set %}
   {% if is_folder %}
   <div class="col-lg-3 col-md-4 col-sm-6 col-12 img-fluid lightbox-padding">
-    <a title="image" href="{{ gallery.url }}" data-target="#zoomin" data-toggle="modal" data-gallery="gallery" data-type="image">
+    <a title="image" href="{{ gallery.url }}" data-target="#zoomin" data-toggle="modal" data-gallery="gallery" data-type="image" data-url="{{ gallery.url }}">
       <img class="lightbox-img" src="{{ gallery.url }}" alt=""/>
     </a>
   </div>
-
-  
   {% else %}
-    <div class="col-lg-3 col-md-4 col-sm-6 col-12 img-fluid lightbox-padding">
-      <a title="image" href="{% url "gallery" gallery.folder_id %}" data-toggle="lightbox" data-gallery="gallery" data-type="image">
-        <img class="lightbox-img" src="{{ gallery.url }}" alt=""/>
-      </a>
-    </div>
+  <div class="col-lg-3 col-md-4 col-sm-6 col-12 img-fluid lightbox-padding">
+    <a title="image" href="{% url "gallery" gallery.folder_id %}" data-toggle="lightbox" data-gallery="gallery" data-type="image">
+      <img class="lightbox-img" src="{{ gallery.url }}" alt=""/>
+    </a>
+  </div>
   {% endif %}
   {% endfor %}
   </div>
 </div>
-
-<div class="modal fade" id="zoomin" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal fade" id="zoomin" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="carousel slide" id="carouselControls" data-ride="carousel">
-          <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-              <img class="img-fluid" src="{{ gallery.url }}" alt="slide"/>
-            </div>
-            <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
+      <div class="carousel slide" id="carouselControls" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+          <div class="carousel-item active">
+            <img class="img-fluid zoom-box" src="{{ gallery.url }}" alt="slide"/>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 {% endblock content %}
 
 {% block script_extra %}
