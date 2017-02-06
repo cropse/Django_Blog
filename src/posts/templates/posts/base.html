@@ -21,32 +21,32 @@
         <div class="tcp-block">
           {# {% tags_list %} #}
           
-          <form class="tags-block" action="" method="get">          
+          <form class="tags-block" action="" method="get">
             <h6>Tag:</h6>
             {% tags_list as tags %}
-            {% for tag in tags %}              
-              <button class="btn {% if tag.count >= 3 %} btn-danger btn-lg{% elif tag.count >= 2%} btn-warning {% else %}btn-primary btn-sm{% endif %} 
+            {% for tag in tags %}
+              <button class="btn {% if tag.count >= 3 %} btn-danger btn-lg{% elif tag.count >= 2%} btn-warning {% else %}btn-primary btn-sm{% endif %}
               " name="user_search" type="submit" value={{ tag }}>{{ tag }}</button>
-            {% endfor %}          
+            {% endfor %}
           </form>
          
           {# {% Category_list %} #}
           
-          <form class="cate-block" action="" method="get">          
+          <form class="cate-block" action="" method="get">
           <h6>Category:</h6>
             <ul>
               {% Category_list as Categories %}
               {% for category in Categories %}
                 <li>
                   <a href="?category_search={{ category.title }}">
-                    {{ category.title }}({{ category.entries.count }})  
+                    {{ category.title }}({{ category.entries.count }})
                   </a>
                 </li>
               {% endfor %}
-            </ul>          
+            </ul>
           </form>
           
-          <form class="post-block" action="" method="get">          
+          <form class="post-block" action="" method="get">
           <h6>Recent Post:</h6>
             {% get_recent_entries 3 %}
             {# {% get_calendar_entries 2017 %} #}

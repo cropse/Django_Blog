@@ -20,7 +20,7 @@
     <hr>
 
       {# Main-image #}
-    {% if instance.image %}  
+    {% if instance.image %}
     <img src="{{ instance.image.url }}" class="img-fluid" alt="Responsive image">
     {% endif %}
     <div class="row">
@@ -39,7 +39,7 @@
 
     <hr>
     <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
-    {% include "posts/comment.html" %}    
+    {% include "posts/comment.html" %}
   </div>
 </div>
   {# </div> #}

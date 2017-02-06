@@ -65,7 +65,7 @@ body {
 
 /*手機瀏覽時facebook&soundcloud區塊隱藏*/
 @media screen and (max-width: 767px) {
-	.fbsc {
+	.mobile-disappear {
 		display: none;
 	}
 }
