@@ -7,8 +7,8 @@ def soundcloud(request):
 
 def about_me(request):
     query_set = Introduce.objects.first()
-    print(query_set.content)
-    print(query_set.get_markdown())
+    # print(query_set.content)
+    # print(query_set.get_markdown())
     context={
         'Introduce': query_set,
     }

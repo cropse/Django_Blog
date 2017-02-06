@@ -44,7 +44,7 @@
         <a class="nav-link" href="{% url "gallery" Null %}">Gallery</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline my-2 my-lg-0" action="/posts">
       <div class="input-group">
       <input type="text" class="form-control" name="user_search" value="{{ request.GET.user_search }}" placeholder="Search posts">
       <span class="input-group-btn">
