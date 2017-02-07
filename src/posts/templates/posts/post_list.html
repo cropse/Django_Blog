@@ -9,8 +9,8 @@
 {% endblock head_extra %}
 
 {% block content %}
-  {{ block.super }}
-  <div class="col-lg-9 pull-lg-3 col-md-9 pull-md-3 col-sm-12 col-12">
+  
+  <div class="col-lg-9 col-md-9 col-sm-12 col-12">
     <div class="row">
     {% if object_list %}
       {% for obj in object_list %}
@@ -33,7 +33,7 @@
                 {% endif %}
               
                 <div class="card-text">
-                  {{ obj.get_markdown|truncatewords_html:5|safe }}
+                  {{ obj.get_markdown|truncatewords_html:20|safe }}
                 </div>
                 <p class="card-tag">Tag: {% for tag in obj.tags_list %}
                   <a href="?user_search={{ tag }}" class="badge btn-primary">{{ tag }}</a>
@@ -74,10 +74,5 @@
     </div>
 
   </div>
-
+{{ block.super }}
 {% endblock content %}
-
-{% block script_extra %}
-  {{ block.super }}
-  <script src="{% static 'posts/js/post_list.js' %}"></script>
-{% endblock script_extra %}
