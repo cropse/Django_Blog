@@ -51,7 +51,6 @@ def post_detail(request, slug=None):# retrieve
 def post_list(request):# list item
     today = timezone.now().date()
 
-    # print(dir(entries_published))
     # queryset_list = Entry.published.on_site()
 
     search_list = request.GET.get("user_search")
@@ -69,8 +68,6 @@ def post_list(request):# list item
     #         Q(user__first_name__icontains=search_list)|
     #         Q(user__last_name__icontains=search_list)
     #         )
-    print("Tagg")
-    # print(Entry.tags.title())
 
     paginator = Paginator(queryset_list, 5) # Show 5 contacts per page
     page_request_var = 'page'

@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models.signals import pre_save
 from django.conf import settings
 from django.utils import timezone
-from markdown2 import markdown
+from markdown import markdown
 from ckeditor_uploader.fields import RichTextUploadingField
 
 from django.utils.text import slugify
@@ -25,7 +25,7 @@ class MyEntry(AbstractEntry):
 
     def get_markdown(self):
         content = self.content
-        markdown_text = markdown(content)
+        markdown_text = markdown.markdown(content, ['markdown.extensions.extra'])
         return markdown_text
 
     def __str__(self):

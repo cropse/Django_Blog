@@ -1,6 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
-from markdown2 import markdown
+from django.core.urlresolvers import reverse
+import markdown
 
 # Create your models here.
 class Introduce(models.Model):
@@ -18,9 +19,11 @@ class Introduce(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("posts:detail", kwargs={'slug':self.slug})
+        return reverse("about_me")
 
     def get_markdown(self):
         content = self.content
-        markdown_text = markdown(content)
+        # adding model image to markdown named "image"
+        content += "[image]: " + self.image.url
+        markdown_text = markdown.markdown(content, ['markdown.extensions.extra'])
         return markdown_text
