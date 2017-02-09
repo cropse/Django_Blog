@@ -20,6 +20,7 @@ class MyEntry(AbstractEntry):
 
     def active(self):
         return self.advanced_search("ed")
+
     def get_absolute_url(self):
         return reverse("posts:detail", kwargs={'slug':self.slug})
 

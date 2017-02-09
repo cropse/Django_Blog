@@ -10,7 +10,7 @@
 
 {% block content %}
   
-  <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+  <div class="col-lg-9 col-md-8 col-sm-12 col-12">
     <div class="row">
     {% if object_list %}
       {% for obj in object_list %}
@@ -43,7 +43,7 @@
 
                 {% endfor %}
                 </p>
-                <a href="{{ obj.get_absolute_url }}" class="btn btn-primary btn-lg read">View <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                <a href="{{ obj.get_absolute_url }}" class="btn btn-primary btn-lg" id="view">View <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                 
               </div>
             </div>

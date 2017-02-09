@@ -3,16 +3,16 @@
 {% load global_zinnia %}
 {% block content %}
 
-  <!-- side Bar -->
-<div class="col-lg-3 col-md-3 hidden-sm-down">
+<!-- Side Bar -->
+<div class="col-lg-3 col-md-4 ">
 <div class="row">
   <div class="col-12">
-    <div class="fb-page" data-href="https://www.facebook.com/Cropse-1507642772825208/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+    <div class="fb-page hidden-sm-down" data-href="https://www.facebook.com/Cropse-1507642772825208/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
       <blockquote cite="https://www.facebook.com/Cropse-1507642772825208/" class="fb-xfbml-parse-ignore">
         <a href="https://www.facebook.com/Cropse-1507642772825208/">Cropse</a>
       </blockquote>
     </div>
-    <div class="soundcloud-block">
+    <div class="soundcloud-block hidden-sm-down">
   {# Adding the SoundCloud embedded Code #}
       <iframe width="100%" height="200" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/236913528&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true">
       </iframe>
@@ -24,10 +24,15 @@
           <form class="tags-block" action="" method="get">
             <h6>Tag:</h6>
             {% tags_list as tags %}
+            <ul>
             {% for tag in tags %}
-              <button class="btn {% if tag.count >= 3 %} btn-danger btn-lg{% elif tag.count >= 2%} btn-warning {% else %}btn-primary btn-sm{% endif %}
-              " name="user_search" type="submit" value={{ tag }}>{{ tag }}</button>
+              <li class="{% if tag.count >= 3 %}tag-lg{% elif tag.count >= 2%}tag-md{% else %}tag-sm{% endif %}">
+                <a href="">{{ tag }}</a>({{ tag.count }})
+              </li>
+              <!-- <button class="btn {% if tag.count >= 10 %} btn-danger btn-lg{% elif tag.count >= 5%} btn-warning {% else %}btn-primary btn-sm{% endif %}
+              " name="user_search" type="submit" value={{ tag }}>{{ tag }}</button> -->
             {% endfor %}
+            </ul>
           </form>
          
           {# {% Category_list %} #}
@@ -66,7 +71,15 @@
 #fb-root {
     display: none;
 }
-
+.tag-lg {
+  font-size: 22px !important;;
+}
+.tag-md {
+  font-size: 15px !important;;
+}
+.tag-sm {
+  font-size: 8px !important;; 
+}
 /* 讓所有容器的寬度都變成 100% */
 .fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
     width: 100% !important;
