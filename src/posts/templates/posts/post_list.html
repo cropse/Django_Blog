@@ -10,7 +10,7 @@
 
 {% block content %}
   
-  <div class="col-lg-9 col-md-8 col-sm-12 col-12">
+  <div class="col-lg-9 col-md-8 col-sm-12">
     <div class="row">
     {% if object_list %}
       {% for obj in object_list %}
@@ -35,7 +35,7 @@
                 <div class="card-text">
                   {{ obj.get_markdown|truncatewords_html:20|safe }}
                 </div>
-                <p class="card-tag">Tag: {% for tag in obj.tags_list %}
+                <p id="card-tag">Tag: {% for tag in obj.tags_list %}
                   <a href="?user_search={{ tag }}" class="badge btn-primary">{{ tag }}</a>
                                   
                   {# add tag button for search function #}

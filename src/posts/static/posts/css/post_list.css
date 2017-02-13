@@ -41,10 +41,10 @@ hr {
 }
 
 /*文章預覽標籤*/
-/*.card-tag a {
+#card-tag a {
 	display: inline;
 }
-*/
+
 /*繼續閱讀按鈕*/
 #view {
 	float: right;
