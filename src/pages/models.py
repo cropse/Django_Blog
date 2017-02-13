@@ -25,5 +25,5 @@ class Introduce(models.Model):
         content = self.content
         # adding model image to markdown named "image"
         content += "[image]: " + self.image.url
-        markdown_text = markdown.markdown(content, ['markdown.extensions.extra'])
+        markdown_text = markdown.markdown(content, ['markdown.extensions.extra', 'markdown_checklist.extension'])
         return markdown_text
