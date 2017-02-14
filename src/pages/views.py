@@ -11,3 +11,9 @@ def about_me(request):
         'Introduce': query_set,
     }
     return render(request, "about_me/about_me.html", context)
+
+def handler404(request):
+    return render(request, 'custom404.html', status=404)
+
+def handler500(request):
+    return render(request, 'custom500.html', status=500)

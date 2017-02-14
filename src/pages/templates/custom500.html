@@ -1,0 +1,12 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+  <title>{% block head_title %}
+    500 Error
+  {% endblock head_title %}</title>
+
+{% block content %}
+  <h1>
+    <img src="{% static "custom/spin.gif" %}">
+    Server Error!!
+  </h1>
+{% endblock content %}

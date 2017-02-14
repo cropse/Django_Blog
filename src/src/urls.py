@@ -37,6 +37,9 @@ blog_urls = ([
     # url(r'^blog/', include('zinnia.urls.quick_entry'))
 ], 'zinnia')
 
+handler404 = "pages.views.handler404"
+handler500 = "pages.views.handler500"
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^posts/', include("posts.urls", namespace='posts')),
