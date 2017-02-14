@@ -4,7 +4,7 @@ from django.contrib import admin
 from zinnia.views.search import EntrySearch
 
 from .views import (
-    # post_create,
+    post_create,
     post_detail,
     post_list,
     # post_update,
@@ -14,7 +14,7 @@ from .views import (
 
 urlpatterns = [
     # url(r'^$', views.post_detail ),
-    # url(r'^create/$', post_create),
+    url(r'^create/$', post_create),
     url(r'^(?P<slug>[\w-]+)/$', post_detail, name='detail'),
     url(r'^$', post_list, name='list'),
     # url(r'^(?P<slug>[\w-]+)/edit/$', post_update, name='update'),

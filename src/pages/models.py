@@ -3,6 +3,11 @@ from ckeditor.fields import RichTextField
 from django.core.urlresolvers import reverse
 import markdown
 
+from django.utils.text import slugify
+from unidecode import unidecode
+from zinnia.models import Entry
+from django.db.models.signals import pre_save
+
 # Create your models here.
 class Introduce(models.Model):
     """docstring for Introduce"""
@@ -27,3 +32,22 @@ class Introduce(models.Model):
         content += "[image]: " + self.image.url
         markdown_text = markdown.markdown(content, ['markdown.extensions.extra', 'markdown_checklist.extension'])
         return markdown_text
+
+def create_slug(instance, new_slug=None):
+    slug = slugify(unidecode(instance.title))# fix unicode null in slugify
+    if new_slug is not None:
+        slug = new_slug
+    qs = Entry.objects.filter(slug=slug).order_by("-id")
+    exists = qs.exists()
+    if exists:
+        new_slug = "{0}-{1}".format(slug, qs.first().id)
+        return create_slug(instance, new_slug=new_slug)
+    return slug
+
+
+def pre_save_post_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = create_slug(instance)
+
+
+pre_save.connect(pre_save_post_receiver, sender=Entry)

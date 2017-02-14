@@ -8,31 +8,34 @@ from django.utils import timezone
 
 # Create your views here.
 # from .models import Post
-# from .forms import PostForm
+from .forms import EntryForm
 from zinnia.models import Entry
 from zinnia.models import Category
 from zinnia.managers import tags_published
+
+from zinnia.views.tags import TagList
 # from .models import EntryGallery
 
 # from zinnia.views.search import EntrySearch
 
-# def post_create(request):
-#     if not request.user.is_staff or not request.user.is_superuser:
-#         raise Http404
+def post_create(request):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
 
-#     form = PostForm(request.POST or None, request.FILES or None)
-#     if form.is_valid():
-#         print(form.cleaned_data.get("title"))
-#         instance = form.save(commit=False)
-#         instance.user = request.user
-#         instance.save()
-#         # message success
-#         messages.success(request, "Successfully Create")
-#         return HttpResponseRedirect(instance.get_absolute_url())
-#     context = {
-#         "form": form,
-#     }
-#     return render(request, "posts/post_form.html", context)
+    form = EntryForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        print(form.cleaned_data.get("title"))
+        instance = form.save(commit=False)
+        instance.user = request.user
+        instance.save()
+        # message success
+        messages.success(request, "Successfully Create")
+        return HttpResponseRedirect(instance.get_absolute_url())
+    context = {
+        "form": form,
+        "tags": TagList,
+    }
+    return render(request, "posts/post_form.html", context)
  
 def post_detail(request, slug=None):# retrieve
     instance = get_object_or_404(Entry, slug=slug)

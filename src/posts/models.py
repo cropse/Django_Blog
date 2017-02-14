@@ -1,16 +1,11 @@
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.db.models.signals import pre_save
+
 from django.conf import settings
 from django.utils import timezone
 import markdown
 from ckeditor_uploader.fields import RichTextUploadingField
 
-from django.utils.text import slugify
-from unidecode import unidecode
-
-from django.db import models
-# from zinnia.models import Entry
 from zinnia.models_bases.entry import AbstractEntry
 
 from django.contrib import admin
@@ -94,7 +89,6 @@ def user_directory_path(instance, filename):
 # def pre_save_post_receiver(sender, instance, *args, **kwargs):
 #     if not instance.slug:
 #         instance.slug = create_slug(instance)
-
 
 
 # pre_save.connect(pre_save_post_receiver, sender=Post)
