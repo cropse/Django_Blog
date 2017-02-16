@@ -31,9 +31,7 @@ Package used:
 * uwsgi
 * Nginx
 
-deploy on [aws][aws logo]{: style="width: 100px"}
-
-
+This project deployment is powered by AWS web services
 
 project start with my learnning tutorial from <https://www.udemy.com/try-django/>
 
@@ -44,5 +42,3 @@ project start with my learnning tutorial from <https://www.udemy.com/try-django/
 
 [Embeded.ly]: http://embed.ly/embed
 [Django-filer]: https://github.com/divio/django-filer
-
-[aws logo]: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/AmazonWebservices_Logo.svg/2000px-AmazonWebservices_Logo.svg.png
