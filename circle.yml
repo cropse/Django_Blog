@@ -12,8 +12,8 @@ dependencies:
         - pyenv global 3.6.0
         - pip3 install -r $HOME/Django_Blog/requirement.txt
         # - pip install selenium
-        - export DJANGO_SETTINGS_MODULE=src.settings.production
 
 test:
     override:
+        - export DJANGO_SETTINGS_MODULE=src.settings.production        
         - python3 $HOME/Django_Blog/src/manage.py test
