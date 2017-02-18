@@ -96,24 +96,24 @@ def post_list(request):# list item
 
 
 
-# def post_update(request, slug=None):
-#     if not request.user.is_staff or not request.user.is_superuser:
-#         raise Http404 
-#     instance = get_object_or_404(Post, slug=slug)
-#     form = PostForm(request.POST or None, request.FILES or None, instance=instance)
-#     # form is posted
-#     if form.is_valid():
-#         instance = form.save(commit=False)
-#         instance.save()
-#         messages.success(request, "<a href='#'>Item</a> Edit", extra_tags="html-safe")
-#         return HttpResponseRedirect(instance.get_absolute_url())
-#     # load old instance
-#     context = {
-#         'instance': instance,
-#         'title': instance.title,
-#         'form':form,
-#     }
-#     return render(request, "posts/post_form.html", context)
+def post_update(request, slug=None):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404 
+    instance = get_object_or_404(Entry, slug=slug)
+    form = EntryForm(request.POST or None, request.FILES or None, instance=instance)
+    # form is posted
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        messages.success(request, "<a href='#'>Item</a> Edit", extra_tags="html-safe")
+        return HttpResponseRedirect(instance.get_absolute_url())
+    # load old instance
+    context = {
+        'instance': instance,
+        'title': instance.title,
+        'form':form,
+    }
+    return render(request, "posts/post_form.html", context)
 
 # def post_delete(request, slug=None):
 #     if request.user.is_staff or not request.user.is_superuser:

@@ -19,7 +19,7 @@
     {% endif %}
     {{ instance.publish }} Updated {{ instance.publication_date|timesince }} ago
     </small>
-
+    <a href={% url "posts:update" slug=instance.slug %}>Edit It</a>
     <hr>
 
       {# Main-image #}
@@ -35,7 +35,6 @@
 
         
         {% if request.user.is_staff %}
-        {# <a href={% url "posts:update" slug=instance.slug %}>Edit It</a> #}
         {% endif %}
       </div>
     </div>

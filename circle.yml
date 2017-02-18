@@ -1,0 +1,17 @@
+# general:
+#     artifacts:
+#         - "dist/avame-0.1.0+${CIRCLE_BUILD_NUM}.tgz"
+
+dependencies:
+    override:
+        - sudo apt-get install  nginx uwsgi python3 build-essential python3-dev python3-setuptools python3-pip -y
+        - sudo apt-get install uwsgi-plugin-python3 -y
+        # - sudo mkdir -p /usr/local/lib
+        # - sudo pip install -U pip
+        # - sudo easy_install -U setuptools
+        - pip3 install -r requirements.txt
+        # - pip install selenium
+
+test:
+    override:
+        - python3 src/manage.py test
