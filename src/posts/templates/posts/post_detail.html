@@ -2,9 +2,13 @@
 {% load staticfiles %}
 {# {% load urlify %} #}
 
-{% block head_title %}
+{% block extratitle %}
 {{ instance.title }}|{{ block.super }}    
-{% endblock head_title %}
+{% endblock extratitle %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static "posts/css/post_detail.css" %}">
+{% endblock extrastyle %}
 
 {% block content %}
 
@@ -26,7 +30,7 @@
       <div class="col-md-12">
         {# content #}
         <div class="post-detail-item">
-        {{ instance.get_markdown|safe}}<br/>
+        {{ instance.get_markdown|safe|linebreaks}}<br/>
         </div>
 
         

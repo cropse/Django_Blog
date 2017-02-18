@@ -1,12 +1,12 @@
 {% extends "posts/base.html" %}
 {% load staticfiles %}
-{% block head_title %}
+{% block extratitle %}
   Post List
-{% endblock head_title %}
+{% endblock extratitle %}
 
-{% block head_extra %}
+{% block extrastyle %}
   <link rel="stylesheet" type="text/css" href="{% static "posts/css/post_list.css" %}">
-{% endblock head_extra %}
+{% endblock extrastyle %}
 
 {% block content %}
   
@@ -33,7 +33,7 @@
                 {% endif %}
               
                 <div class="card-text">
-                  {{ obj.get_markdown|truncatewords_html:20|safe }}
+                  {{ obj.get_markdown|truncatewords_html:20|safe|linebreaks }}
                 </div>
                 <p id="card-tag">Tag: {% for tag in obj.tags_list %}
                   <a href="?user_search={{ tag }}" class="badge btn-primary">{{ tag }}</a>

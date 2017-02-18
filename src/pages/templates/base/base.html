@@ -4,9 +4,9 @@
 <head>
   <link rel="shortcut icon" href="{% static "base/favicon.ico" %}"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>{% block head_title %}
+  <title>{% block extratitle %}
       Cropse:
-  {% endblock head_title %}</title>
+  {% endblock extratitle %}</title>
   <!-- Latest compiled and minified CSS -->
 
   
@@ -18,8 +18,8 @@
 
   <link rel="stylesheet" type="text/css" href="{% static "base/css/base.css" %}">
   <style>{% block style %}{% endblock style %}</style>
-  {% block head_extra %}
-  {% endblock head_extra %}
+  {% block extrastyle %}
+  {% endblock extrastyle %}
 </head>
 <body>
 
@@ -75,7 +75,7 @@
 <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script> -->
 
 <!-- <script src="{% static 'base/js/base.js' %}"></script> -->
-{% block script_extra %}{% endblock script_extra %}
+{% block extrahead %}{% endblock extrahead %}
 </body>
 </html>
 

@@ -1,13 +1,13 @@
 {% extends "base/base.html" %}
 {% load staticfiles %}
-{% block head_title %}
+{% block extratitle %}
   gallery
-{% endblock head_title %}
+{% endblock extratitle %}
 
 
-{% block head_extra %}
+{% block extrastyle %}
   <link rel="stylesheet" type="text/css" href="{% static "gallery/css/gallery.css" %}">
-{% endblock head_extra %}
+{% endblock extrastyle %}
 
 
 {% block content %}
@@ -46,6 +46,6 @@
 
 {% endblock content %}
 
-{% block script_extra %}
+{% block extrahead %}
   <script src="{% static 'gallery/js/gallery.js' %}"></script>
-{% endblock script_extra %}
+{% endblock extrahead %}

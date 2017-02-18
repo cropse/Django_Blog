@@ -1,12 +1,12 @@
 {% extends "base/base.html" %}
 {% load staticfiles %}
-  <title>{% block head_title %}
+  <title>{% block extratitle %}
   {{ block.super }}about me
-  {% endblock head_title %}</title>
+  {% endblock extratitle %}</title>
 
-  {% block head_extra %}
+  {% block extrastyle %}
 
-  {% endblock head_extra %}
+  {% endblock extrastyle %}
 
 {% block content %}
 <!-- Title -->
@@ -35,11 +35,11 @@
 
 {% endblock content %}
 
-{% block script_extra %}
+{% block extrahead %}
   <script>
   $(document).ready(function(){
     // $("#test").load("" );
     console.log("123");
   });
   </script>  
-{% endblock script_extra %}
+{% endblock extrahead %}
