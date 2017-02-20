@@ -33,7 +33,7 @@
                 {% endif %}
               
                 <div class="card-text">
-                  {{ obj.get_markdown|truncatewords_html:20|safe|linebreaks }}
+                  {{ obj.get_markdown|truncatewords_html:20|safe }}
                 </div>
                 <p id="card-tag">Tag: {% for tag in obj.tags_list %}
                   <a href="?user_search={{ tag }}" class="badge btn-primary">{{ tag }}</a>

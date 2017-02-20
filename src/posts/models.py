@@ -21,7 +21,7 @@ class MyEntry(AbstractEntry):
 
     def get_markdown(self):
         content = self.content
-        markdown_text = markdown.markdown(content, ['markdown.extensions.extra', 'markdown_checklist.extension'])
+        markdown_text = markdown.markdown(content, ['markdown.extensions.extra', 'markdown_checklist.extension','markdown.extensions.nl2br'])
         return markdown_text
 
     def __str__(self):

@@ -30,7 +30,7 @@ class Introduce(models.Model):
         content = self.content
         # adding model image to markdown named "image"
         content += "[image]: " + self.image.url
-        markdown_text = markdown.markdown(content, ['markdown.extensions.extra', 'markdown_checklist.extension'])
+        markdown_text = markdown.markdown(content, ['markdown.extensions.extra', 'markdown_checklist.extension','markdown.extensions.nl2br'])
         return markdown_text
 
 def create_slug(instance, new_slug=None):

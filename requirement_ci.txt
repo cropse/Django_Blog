@@ -8,3 +8,4 @@ Unidecode==0.4.20
 django-blog-zinnia==0.18.1
 django-filer==1.2.6
 markdown-checklist
+selenium
