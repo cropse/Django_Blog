@@ -20,17 +20,9 @@ and the source code is also on [Github][BlogGithub]
 `testclass`{: .added}""")
 
     def test_entry_checkbox(self):
-        Checkboxtest = Entry.objects.get(title="test_checkbox")
-        self.assertEqual(Checkboxtest.get_markdown(), 
-"""<p>and the source code is also on <a href="www.cropse.com">Github</a>
-<strong>notice: the site is on beta</strong></p>
-<h3>Todo list</h3>
-<hr />
-<ul class="checklist">
-<li><input type="checkbox" disabled> Mercury</li>
-<li><input type="checkbox" disabled checked> Venus</li>
-<li><input type="checkbox" disabled checked> Earth (Orbit/Moon)")</li>
-</ul>""")
+        response = self.client.get('/posts/test_checkbox/')
+        # print(response.content)
+        self.assertContains(response, """<li><input type="checkbox" disabled> Mercury</li>\n<li><input type="checkbox" disabled checked> Venus</li>\n<li><input type="checkbox" disabled checked> Earth (Orbit/Moon)")</li>""")
 
     def test_slug(self):
         slug_test = Entry.objects.get(title="test_p_id")
@@ -39,14 +31,15 @@ and the source code is also on [Github][BlogGithub]
     def test_class(self):
         response = self.client.get('/posts/test_class/')
         self.assertContains(response, """<code class="added">testclass</code>""")
-        self.assertContains(response, "<p><strong>123</strong><br />456<br /><strong>789</strong><br />012</p>")
+        # print(response.content)
+        self.assertContains(response, "<p><strong>123</strong><br />\n456<br />\n<strong>789</strong><br />\n012</p>")
 
     def test_response(self):
         response = self.client.get('/posts/test_p_id/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'base/base.html')
         self.assertTemplateUsed(response, 'posts/post_detail.html')
-        self.assertContains(response, '<p id="title">title</p>')
+        self.assertContains(response, '<p id="title">title<br /></p>')
         response_list = self.client.get('/posts/')
         self.assertEqual(response_list.status_code, 200)
         self.assertTemplateUsed(response_list, 'base/base.html')
