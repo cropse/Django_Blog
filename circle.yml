@@ -17,4 +17,5 @@ dependencies:
 test:
     override:
         # - export DJANGO_SETTINGS_MODULE=src.settings.production
+        - echo DJANGO_SETTINGS_MODULE 
         - python3 $HOME/Django_Blog/src/manage.py test
