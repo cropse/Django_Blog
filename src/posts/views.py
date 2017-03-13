@@ -63,7 +63,11 @@ def post_list(request):# list item
         queryset_list = Entry.published.on_site()
     else:
         queryset_list = Entry.objects.filter(status=2)
-        
+
+    search_tag = request.GET.get("tag_search")
+    if search_tag:
+        queryset_list = queryset_list.filter(tags__icontains=search_tag)
+
     queryset = queryset_list
     #     queryset_list = queryset_list.filter(
     #         Q(title__icontains=search_list) |

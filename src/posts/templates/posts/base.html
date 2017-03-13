@@ -27,7 +27,7 @@
             <ul>
             {% for tag in tags %}
               <li class="{% if tag.count >= 3 %}tag-lg{% elif tag.count >= 2%}tag-md{% else %}tag-sm{% endif %}">
-                <a href="">{{ tag }}</a>({{ tag.count }})
+                <a href="?tag_search={{ tag }}">{{ tag }}</a>({{ tag.count }})
               </li>
               <!-- <button class="btn {% if tag.count >= 10 %} btn-danger btn-lg{% elif tag.count >= 5%} btn-warning {% else %}btn-primary btn-sm{% endif %}
               " name="user_search" type="submit" value={{ tag }}>{{ tag }}</button> -->
